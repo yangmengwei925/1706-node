@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        .header{
+            background: black;
+            color: #fff;
+            width: 320px;
+            height: 40px;
+            line-height: 40px;
+        }
+        .out{
+            width: 320px;
+            border: 1px solid #ddd;
+        }
+        .receive{
+            width: 320px;
+            height: 400px;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+        p{
+            width: 300px;
+            height: 20px;
+            line-height: 20px;
+            color:black;
+        }
+        .bottom{
+            width: 320px;
+            height: 40px;
+            background: #ddd;
+        }
+        .send{
+            float: left;
+            width: 220px;
+            height: 26px;
+            line-height: 26px;
+            border: 1px solid gray;
+            margin: 5px;
+        }
+        .btn{
+            float: right;
+            width: 80px;
+            height: 28px;
+            line-height: 28px;
+            outline: none;
+            background: rosybrown;
+            color: #fff;
+            margin-right: 5px;
+            margin-top:5px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="out">
+        <div class="header"></div>
+        <!-- 展示消息的窗口 -->
+        <div  class="receive" id="showTxt"></div>
+        <!-- 底部发送按钮 -->
+        <div class="bottom">
+            <input  class="send" type="text" id="sendTxt">
+            <button  class="btn" id="sendBtn">发送</button>
+        </div>
+    </div>
+</body>
+<script>
+    const ws = new WebSocket('ws://169.254.25.46:8888')
+    const showTxt = document.getElementById('showTxt')
+    const sendTxt = document.getElementById('sendTxt')
+    const sendBtn = document.getElementById('sendBtn')
+
+    ws.onmessage = mes=>{
+        let oHtml = document.createElement('p')
+        oHtml.innerHTML = mes.data
+        showTxt.appendChild(oHtml)
+    }
+
+    sendBtn.onclick = function(){
+        //把自己要发送的消息追加进页面
+        let oHtml = document.createElement('p')
+        oHtml.innerHTML = sendTxt.value
+        oHtml.style.textAlign = 'right'
+        showTxt.appendChild(oHtml)
+        //向服务器发送
+        ws.send(sendTxt.value)
+    }
+</script>
+</html>

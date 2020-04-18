@@ -1,0 +1,14 @@
+{
+  "name": "zhongxue",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "zhongxue": "node index.js"
+  },
+  "bin": {
+    "create-zhongxue-app": "index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

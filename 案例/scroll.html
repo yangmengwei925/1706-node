@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #A,#B,#C,#D{
+        width: 100%;
+        height: 500px;
+    }
+    #A{background: orange;}
+    #B{background: red;}
+    #C{background: green;}
+    #D{background: gray;}
+    #ULS{
+        position: fixed;
+        top:0;
+        width: 50px;
+        height: 300px;
+
+    }
+    </style>
+</head>
+<body>
+    <div id="A">
+        A区域内容
+    </div>
+    <div id="B">
+        B区域内容
+    </div>
+    <div id="C">
+        C区域内容
+    </div>
+    <div id="D">
+        D区域内容
+    </div>
+    <ul id="ULS">
+
+    </ul>
+</body>
+<script>
+(function(){
+    let OPTION_VAL = {
+        OPTION_A:document.getElementById('A'),
+        OPTION_B:document.getElementById('B'),
+        OPTION_C:document.getElementById('C'),
+        OPTION_D:document.getElementById('D'),
+        OPTION_UL:document.getElementById('ULS'),
+        OPTION_SCROLL_TOP:document.documentElement.scrollTop||window.pageYOffset||document.body.scrollTop
+    }
+    let SCROLL_VAL = {
+        __A:OPTION_VAL.OPTION_A.offsetTop,
+        __B:OPTION_VAL.OPTION_B.offsetTop,
+        __C:OPTION_VAL.OPTION_C.offsetTop,
+        __D:OPTION_VAL.OPTION_D.offsetTop
+    }
+    console.log(SCROLL_VAL)
+})()
+    
+
+</script>
+</html>
